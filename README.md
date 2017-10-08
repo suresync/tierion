@@ -1,54 +1,54 @@
 # tierion
 
-set -e
+<code>set -e</code></br>
 
-# Pre-requisites:
-# - 64-bit Ubuntu 16.04 server
-# - Non-root user with sudo privileges
-#
-echo '#################################################'
-echo 'Installing Firewall'
-echo '#################################################'
-sudo apt-get update
-sudo apt-get upgrade -y
-sudo apt-get --assume-yes install ufw
-sudo ufw allow OpenSSH
-sudo ufw allow mnport
-sudo ufw default deny incoming
-sudo ufw default allow outgoing
-sudo ufw --force enable
+<code># Pre-requisites:</code></br>
+<code># - 64-bit Ubuntu 16.04 server</code></br>
+<code># - Non-root user with sudo privileges</code></br>
+<code>#</code></br>
+<code>echo '#################################################'</code></br>
+<code>echo 'Installing Firewall'</code></br>
+<code>echo '#################################################'</code></br>
+<code>sudo apt-get update</code></br>
+<code>sudo apt-get upgrade -y</code></br>
+<code>sudo apt-get --assume-yes install ufw</code></br>
+<code>sudo ufw allow OpenSSH</code></br>
+<code>sudo ufw allow mnport</code></br>
+<code>sudo ufw default deny incoming</code></br>
+<code>sudo ufw default allow outgoing</code></br>
+<code>sudo ufw --force enable</code></br>
 
-echo '#################################################'
-echo 'Installing Docker'
-echo '#################################################'
-sudo apt-get -y install software-properties-common
-sudo 
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-sudo apt-get update
-apt-cache policy docker-ce
-sudo apt-get install -y docker-ce make
+<code>echo '#################################################'</code></br>
+<code>echo 'Installing Docker'</code></br>
+<code>echo '#################################################'</code></br>
+<code>sudo apt-get -y install software-properties-common</code></br>
+<code>sudo </code></br>
+<code>curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -</code></br>
+<code>sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"</code></br>
+<code>sudo apt-get update</code></br>
+<code>apt-cache policy docker-ce</code></br>
+<code>sudo apt-get install -y docker-ce make</code></br>
 
-echo '#################################################'
-echo 'Allow current user to use Docker without "sudo"'
-echo '#################################################'
-sudo usermod -aG docker ${USER}
+<code>echo '#################################################'</code></br>
+<code>echo 'Allow current user to use Docker without "sudo"'</code></br>
+<code>echo '#################################################'</code></br>
+<code>sudo usermod -aG docker ${USER}</code></br>
 
-echo '#################################################'
-echo 'Installing Docker Compose'
-echo '#################################################'
-sudo mkdir -p /usr/local/bin
-sudo curl -s -L "https://github.com/docker/compose/releases/download/1.16.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
+<code>echo '#################################################'</code></br>
+<code>echo 'Installing Docker Compose'</code></br>
+<code>echo '#################################################'</code></br>
+<code>sudo mkdir -p /usr/local/bin</code></br>
+<code>sudo curl -s -L "https://github.com/docker/compose/releases/download/1.16.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose</code></br>
+<code>sudo chmod +x /usr/local/bin/docker-compose</code></br>
 
-echo '#################################################'
-echo 'Downloading chainpoint-node Github Repository'
-echo '#################################################'
-if [ ! -d "~/chainpoint-node" ]; then
-  cd ~ && git clone https://github.com/chainpoint/chainpoint-node
-fi
+<code>echo '#################################################'</code></br>
+<code>echo 'Downloading chainpoint-node Github Repository'</code></br>
+<code>echo '#################################################'</code></br>
+<code>if [ ! -d "~/chainpoint-node" ]; then</code></br>
+<code>  cd ~ && git clone https://github.com/chainpoint/chainpoint-node</code></br>
+<code>fi</code></br>
 
-echo '#################################################'
-echo 'Creating .env config file from .env.sample'
-echo '#################################################'
-cd ~/chainpoint-node && make build-config
+<code>echo '#################################################'</code></br>
+<code>echo 'Creating .env config file from .env.sample'</code></br>
+<code>echo '#################################################'</code></br>
+<code>cd ~/chainpoint-node && make build-config</code></br>
