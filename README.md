@@ -13,7 +13,7 @@
 <code>sudo apt-get upgrade -y</code></br>
 <code>sudo apt-get --assume-yes install ufw</code></br>
 <code>sudo ufw allow OpenSSH</code></br>
-<code>sudo ufw allow mnport</code></br>
+<code>sudo ufw allow 80</code></br>
 <code>sudo ufw default deny incoming</code></br>
 <code>sudo ufw default allow outgoing</code></br>
 <code>sudo ufw --force enable</code></br>
